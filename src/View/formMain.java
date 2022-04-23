@@ -37,6 +37,7 @@ public class formMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSV = new javax.swing.JTable();
         btnThem = new javax.swing.JButton();
@@ -75,6 +76,11 @@ public class formMain extends javax.swing.JFrame {
         itemDangXuat = new javax.swing.JMenuItem();
         itemThoat = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        itemQuanLyLop = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cửa Sổ Chính");
@@ -104,6 +110,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableSV);
         if (tableSV.getColumnModel().getColumnCount() > 0) {
+            tableSV.getColumnModel().getColumn(0).setPreferredWidth(20);
             tableSV.getColumnModel().getColumn(2).setPreferredWidth(20);
             tableSV.getColumnModel().getColumn(3).setPreferredWidth(20);
             tableSV.getColumnModel().getColumn(4).setPreferredWidth(25);
@@ -310,7 +317,7 @@ public class formMain extends javax.swing.JFrame {
         });
         getContentPane().add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 130, 30));
 
-        jMenu2.setText("Hệ Thống");
+        jMenu2.setText("Tác Vụ");
 
         itemDangXuat.setText("Đăng xuất");
         itemDangXuat.addActionListener(new java.awt.event.ActionListener() {
@@ -330,7 +337,29 @@ public class formMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Edit");
+        jMenu3.setText("Hệ Thống");
+
+        itemQuanLyLop.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itemQuanLyLop.setText("Quản lý lớp");
+        itemQuanLyLop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemQuanLyLopActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemQuanLyLop);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setText("Quản lý môn");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem3.setText("Quản lý giảng viên");
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -501,7 +530,7 @@ public class formMain extends javax.swing.JFrame {
         sv.setIdLop(txtMaLop.getText());
         
         if (svDAO.CapNhatSinhVien(sv) == -1) {
-            JOptionPane.showMessageDialog(null, "Format ngày sinh yyyy/mm/dd!\nMSSV không được trùng!\nMã lớp phải tồn tại!", "Thông báo!",
+            JOptionPane.showMessageDialog(null, "Format ngày sinh yyyy/mm/dd!\nMã lớp phải tồn tại!", "Thông báo!",
                 JOptionPane.ERROR_MESSAGE);
         } else
         JOptionPane.showMessageDialog(null, "Cập nhật thành công sinh viên " + txtHoTen.getText());
@@ -538,6 +567,16 @@ public class formMain extends javax.swing.JFrame {
         System.exit(0);
         }
     }//GEN-LAST:event_itemThoatActionPerformed
+
+    private void itemQuanLyLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemQuanLyLopActionPerformed
+        formLopHoc a = new formLopHoc();
+        a.setVisible(true);
+    }//GEN-LAST:event_itemQuanLyLopActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        formMonHoc a = new formMonHoc();
+        a.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -584,12 +623,16 @@ public class formMain extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkboxNam;
     private javax.swing.JCheckBox checkboxNu;
     private javax.swing.JMenuItem itemDangXuat;
+    private javax.swing.JMenuItem itemQuanLyLop;
     private javax.swing.JMenuItem itemThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

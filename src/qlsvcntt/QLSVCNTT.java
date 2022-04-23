@@ -4,6 +4,8 @@
  */
 package qlsvcntt;
 
+import View.formDangNhap;
+
 /**
  *
  * @author ASUS RG
@@ -15,6 +17,7 @@ public class QLSVCNTT {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new formDangNhap().setVisible(true);
     }
-    
+
 }

@@ -8,6 +8,7 @@
             <file>file:/E:/DA%20Java/QLSVCNTT/src/DAO/AdminDAO.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/Model/Admin.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/Model/SinhVien.java</file>
+            <file>file:/E:/DA%20Java/QLSVCNTT/src/View/formLopHoc.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/DAO/SinhVienDAO.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/Model/ChiTietMonHoc.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/View/formMain.java</file>
@@ -18,6 +19,7 @@
             <file>file:/E:/DA%20Java/QLSVCNTT/src/DAO/ConnectDB.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/DAO/LopHocDAO.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/Model/MonHoc.java</file>
+            <file>file:/E:/DA%20Java/QLSVCNTT/src/View/formMonHoc.java</file>
             <file>file:/E:/DA%20Java/QLSVCNTT/src/DAO/ChiTietMonHocDAO.java</file>
         </group>
     </open-files>

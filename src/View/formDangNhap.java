@@ -160,4 +160,5 @@ public class formDangNhap extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassWord;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
 }

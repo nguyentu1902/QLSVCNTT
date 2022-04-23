@@ -14,8 +14,9 @@ import java.util.Vector;
  *
  * @author ASUS RG
  */
-public class LopHocDAO extends ConnectDB{
-        public Vector<LopHoc> DanhSachLop() {
+public class LopHocDAO extends ConnectDB {
+
+    public Vector<LopHoc> DanhSachLop() {
         Vector<LopHoc> vec = new Vector<LopHoc>();
         try {
             String sql = "SELECT * FROM qlsv.lop;";
@@ -34,4 +35,30 @@ public class LopHocDAO extends ConnectDB{
         return vec;
     }
     
+    public int ThemLopHoc( LopHoc lh)
+    {
+        try {
+            String sql = "INSERT INTO `qlsv`.`lop` (`idlop`, `tenlop`) VALUES (?, ?)";
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setString(1, lh.getIdLop());
+            pre.setString(2, lh.getTenLop());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public int XoaLopHoc( LopHoc lh )
+    {
+        try {
+            String sql = "DELETE FROM `qlsv`.`lop` WHERE (`idlop` = ?)";
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setString(1, lh.getIdLop());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }
