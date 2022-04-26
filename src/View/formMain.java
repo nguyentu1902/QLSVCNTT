@@ -441,28 +441,31 @@ public class formMain extends javax.swing.JFrame {
             JOptionPane.WARNING_MESSAGE);
         }
 
-        SinhVienDAO svDAO = new SinhVienDAO();
-        SinhVien a = new SinhVien();
-        a.setIdSinhVien(txtMSSV.getText());
-        a.setHoTen(txtHoTen.getText());
-        if (checkboxNam.isSelected()) {
-            a.setGioiTinh(checkboxNam.getText());
-        } else {
-            a.setGioiTinh(checkboxNu.getText());
-        }
-        a.setNgaySinh(txtNgaySinh.getText());
-        a.setSdt(Integer.parseInt(txtSDT.getText()));
-        a.setDiaChi(txtDiaChi.getText());
-        a.setEmail(txtEmail.getText());
-        a.setIdLop(txtMaLop.getText());
-        //Bat loi input tu nguoi dung
-        if(svDAO.ThemSinhVien(a)==-1)
+        else 
         {
-            JOptionPane.showMessageDialog(null, "Format ngày sinh yyyy/mm/dd!\nMSSV không được trùng!\nMã lớp phải tồn tại!", "Sai dữ liệu đầu vào!",
-                JOptionPane.WARNING_MESSAGE);
+            SinhVienDAO svDAO = new SinhVienDAO();
+            SinhVien a = new SinhVien();
+            a.setIdSinhVien(txtMSSV.getText());
+            a.setHoTen(txtHoTen.getText());
+            if (checkboxNam.isSelected()) {
+                a.setGioiTinh(checkboxNam.getText());
+            } else {
+                a.setGioiTinh(checkboxNu.getText());
+            }
+            a.setNgaySinh(txtNgaySinh.getText());
+            a.setSdt(Integer.parseInt(txtSDT.getText()));
+            a.setDiaChi(txtDiaChi.getText());
+            a.setEmail(txtEmail.getText());
+            a.setIdLop(txtMaLop.getText());
+            //Bat loi input tu nguoi dung
+            if (svDAO.ThemSinhVien(a) == -1) {
+                JOptionPane.showMessageDialog(null, "Format ngày sinh yyyy/mm/dd!\nMSSV không được trùng!\nMã lớp phải tồn tại!", "Sai dữ liệu đầu vào!",
+                        JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Thêm thành công sinh viên " + txtHoTen.getText());
+            }
         }
-        else
-        JOptionPane.showMessageDialog (null, "Thêm thành công sinh viên "+ txtHoTen.getText());
+
 
         //Load lai data sau khi them sinh vien
         LoadData();
@@ -574,6 +577,7 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_itemQuanLyLopActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.dispose();
         formMonHoc a = new formMonHoc();
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
