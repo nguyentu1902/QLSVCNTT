@@ -357,7 +357,13 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem3.setText("Quản lý giảng viên");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -472,16 +478,22 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        SinhVienDAO svDAO = new SinhVienDAO();
-        SinhVien sv = new SinhVien();
-        sv.setIdSinhVien(txtMSSV.getText());
-        if(svDAO.XoaSinhVien(sv)==-1)
+        if("".equals(txtMSSV.getText()))
         {
-            JOptionPane.showMessageDialog(null, "Xóa thất bại", "Thông báo!",
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Yêu cầu nhập MSSV để xóa!","Thông báo!", JOptionPane.WARNING_MESSAGE);
         }
-        else
-        JOptionPane.showMessageDialog (null, "Xóa thành công sinh viên "+ txtHoTen.getText());
+        else 
+        {
+            SinhVienDAO svDAO = new SinhVienDAO();
+            SinhVien sv = new SinhVien();
+            sv.setIdSinhVien(txtMSSV.getText());
+            if (svDAO.XoaSinhVien(sv) == -1) {
+                JOptionPane.showMessageDialog(null, "Xóa thất bại", "Thông báo!",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Xóa thành công sinh viên " + txtHoTen.getText());
+            }
+        }
 
         LoadData();
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -516,44 +528,62 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReLoadActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        SinhVienDAO svDAO = new SinhVienDAO();
-        SinhVien sv = new SinhVien();
+        if (((("".equals(txtMSSV.getText()) || "".equals(txtHoTen.getText()))
+                || "".equals(txtNgaySinh.getText())) || "".equals(txtEmail.getText()))
+                || "".equals(txtMaLop.getText()) || "".equals(txtDiaChi.getText()) || "".equals(txtSDT.getText())) {
+            JOptionPane.showMessageDialog(null, "Yều cầu nhập đầy đủ thông tin!", "Cảnh Báo!",
+                    JOptionPane.WARNING_MESSAGE);
+        } 
+        else 
+        {
+            SinhVienDAO svDAO = new SinhVienDAO();
+            SinhVien sv = new SinhVien();
 
-        sv.setIdSinhVien(txtMSSV.getText());
-        sv.setHoTen(txtHoTen.getText());
-        if (checkboxNam.isSelected()) {
-            sv.setGioiTinh(checkboxNam.getText());
-        } else {
-            sv.setGioiTinh(checkboxNu.getText());
+            sv.setIdSinhVien(txtMSSV.getText());
+            sv.setHoTen(txtHoTen.getText());
+            if (checkboxNam.isSelected()) {
+                sv.setGioiTinh(checkboxNam.getText());
+            } else {
+                sv.setGioiTinh(checkboxNu.getText());
+            }
+            sv.setNgaySinh(txtNgaySinh.getText());
+            sv.setSdt(Integer.parseInt(txtSDT.getText()));
+            sv.setDiaChi(txtDiaChi.getText());
+            sv.setEmail(txtEmail.getText());
+            sv.setIdLop(txtMaLop.getText());
+
+            if (svDAO.CapNhatSinhVien(sv) == -1) {
+                JOptionPane.showMessageDialog(null, "Format ngày sinh yyyy/mm/dd!\nMã lớp phải tồn tại!", "Thông báo!",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Cập nhật thành công sinh viên " + txtHoTen.getText());
+            }
         }
-        sv.setNgaySinh(txtNgaySinh.getText());
-        sv.setSdt(Integer.parseInt(txtSDT.getText()));
-        sv.setDiaChi(txtDiaChi.getText());
-        sv.setEmail(txtEmail.getText());
-        sv.setIdLop(txtMaLop.getText());
-        
-        if (svDAO.CapNhatSinhVien(sv) == -1) {
-            JOptionPane.showMessageDialog(null, "Format ngày sinh yyyy/mm/dd!\nMã lớp phải tồn tại!", "Thông báo!",
-                JOptionPane.ERROR_MESSAGE);
-        } else
-        JOptionPane.showMessageDialog(null, "Cập nhật thành công sinh viên " + txtHoTen.getText());
 
         LoadData();
 
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        SinhVienDAO svDAO = new SinhVienDAO();
-        ArrayList<SinhVien> dssv = svDAO.TimKiemSinhVien(Integer.parseInt(txtMSSV.getText()));
-
-        DefaultTableModel tableSV = (DefaultTableModel) this.tableSV.getModel();
-        tableSV.setRowCount(0);
-        for (SinhVien sv : dssv) {
-            Object[] row = new Object[]{sv.getIdSinhVien(),sv.getHoTen(),sv.getGioiTinh(),sv.getNgaySinh(),sv.getSdt(), sv.getDiaChi(),sv.getEmail(), sv.getIdLop()};
-            tableSV.addRow(row);
+        if ("".equals(txtMSSV.getText())) 
+        {
+            JOptionPane.showMessageDialog(null, "Nhập MSSV để tìm!", "Thông báo!",
+                    JOptionPane.WARNING_MESSAGE);
         }
-        int sl = tableSV.getRowCount();
-        txtSoLuongSV.setText(String.valueOf(sl));
+        
+        else {
+            SinhVienDAO svDAO = new SinhVienDAO();
+            ArrayList<SinhVien> dssv = svDAO.TimKiemSinhVien(Integer.parseInt(txtMSSV.getText()));
+
+            DefaultTableModel tableSV = (DefaultTableModel) this.tableSV.getModel();
+            tableSV.setRowCount(0);
+            for (SinhVien sv : dssv) {
+                Object[] row = new Object[]{sv.getIdSinhVien(), sv.getHoTen(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getSdt(), sv.getDiaChi(), sv.getEmail(), sv.getIdLop()};
+                tableSV.addRow(row);
+            }
+            int sl = tableSV.getRowCount();
+            txtSoLuongSV.setText(String.valueOf(sl));
+        }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void itemDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDangXuatActionPerformed
@@ -572,15 +602,20 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_itemThoatActionPerformed
 
     private void itemQuanLyLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemQuanLyLopActionPerformed
-        formLopHoc a = new formLopHoc();
-        a.setVisible(true);
+        formLopHoc frmLopHoc = new formLopHoc();
+        frmLopHoc.setVisible(true);
     }//GEN-LAST:event_itemQuanLyLopActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.dispose();
-        formMonHoc a = new formMonHoc();
-        a.setVisible(true);
+        formMonHoc frmMonHoc = new formMonHoc();
+        frmMonHoc.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        formGiangVien frmGV = new formGiangVien();           
+        frmGV.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

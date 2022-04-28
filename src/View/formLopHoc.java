@@ -56,7 +56,7 @@ public class formLopHoc extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("DANH SÁCH LỚP");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/listClass.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/classList.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
         tableLop.setModel(new javax.swing.table.DefaultTableModel(
@@ -120,37 +120,38 @@ public class formLopHoc extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtMaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(btnQuayLai)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnQuayLai)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTongSoLop, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 1, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(txtMaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(13, 13, 13)
                                 .addComponent(txtTenLop, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
                                 .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,9 +171,7 @@ public class formLopHoc extends javax.swing.JFrame {
                     .addComponent(btnThem))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(btnQuayLai))
+                    .addComponent(jLabel4)
                     .addComponent(txtTenLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa))
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -180,7 +179,8 @@ public class formLopHoc extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTongSoLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(btnQuayLai))
                 .addContainerGap())
         );
 
@@ -199,34 +199,46 @@ public class formLopHoc extends javax.swing.JFrame {
     }//GEN-LAST:event_tableLopMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        LopHocDAO lhDAO = new LopHocDAO();
-        LopHoc lh = new LopHoc();
-        lh.setIdLop(txtMaLop.getText());
-        lh.setTenLop(txtTenLop.getText());
-        if(lhDAO.ThemLopHoc(lh)==-1)
+        if ("".equals(txtMaLop.getText()) || "".equals(txtTenLop.getText())) 
         {
-            JOptionPane.showMessageDialog (null, "Thêm thất bại "+ txtTenLop.getText() +"\nYêu cầu mã lớp không được trùng!");
+            JOptionPane.showMessageDialog(null, "Nhập đầy đủ thông tin!", "Thông báo!",
+                    JOptionPane.WARNING_MESSAGE);
         }
         else
         {
-            JOptionPane.showMessageDialog (null, "Thêm thành công lớp "+ txtTenLop.getText());
+                    LopHocDAO lhDAO = new LopHocDAO();
+            LopHoc lh = new LopHoc();
+            lh.setIdLop(txtMaLop.getText());
+            lh.setTenLop(txtTenLop.getText());
+            if (lhDAO.ThemLopHoc(lh) == -1) {
+                JOptionPane.showMessageDialog(null, "Thêm thất bại " + txtTenLop.getText() + "\nYêu cầu mã lớp không được trùng!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Thêm thành công lớp " + txtTenLop.getText());
+            }
         }
         loadData();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        LopHocDAO lhDAO = new LopHocDAO();
-        LopHoc lh = new LopHoc();
-        lh.setIdLop(txtMaLop.getText());
-        lh.setTenLop(txtTenLop.getText());
-        if(lhDAO.XoaLopHoc(lh)==-1)
+        if ("".equals(txtMaLop.getText()) || "".equals(txtTenLop.getText())) 
         {
-            JOptionPane.showMessageDialog (null, "Chỉ được xóa các lớp không có sinh viên!");
+            JOptionPane.showMessageDialog(null, "Nhập đầy đủ thông tin!", "Thông báo!",
+                    JOptionPane.WARNING_MESSAGE);
         }
-        else
+        
+        else 
         {
-            JOptionPane.showMessageDialog (null, "Xóa thành công lớp "+ txtTenLop.getText());
+            LopHocDAO lhDAO = new LopHocDAO();
+            LopHoc lh = new LopHoc();
+            lh.setIdLop(txtMaLop.getText());
+            lh.setTenLop(txtTenLop.getText());
+            if (lhDAO.XoaLopHoc(lh) == -1) {
+                JOptionPane.showMessageDialog(null, "Chỉ được xóa các lớp không có sinh viên!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Xóa thành công lớp " + txtTenLop.getText());
+            }
         }
+
         loadData();
     }//GEN-LAST:event_btnXoaActionPerformed
 

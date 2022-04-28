@@ -84,5 +84,27 @@ public class MonHocDAO extends ConnectDB {
         }
         return -1;
     }
+    
+        public ArrayList<MonHoc> TimKiemMonHoc(String tenmh) {
+        ArrayList<MonHoc> dsmh = new ArrayList<MonHoc>();
+        try {
+            String sql;
+            sql = "select * from qlsv.monhoc where tenmh like N'%" + tenmh + "%'";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                MonHoc mh = new MonHoc();
+                mh.setIdMonHoc(rs.getString(1));
+                mh.setTenMonHoc(rs.getString(2));
+                mh.setSoTinChi(rs.getInt(3));
+                mh.setIdGiangVien(rs.getString(4));
+                dsmh.add(mh);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dsmh;
+    }
 
 }
