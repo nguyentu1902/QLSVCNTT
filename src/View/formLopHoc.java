@@ -46,7 +46,7 @@ public class formLopHoc extends javax.swing.JFrame {
         txtTenLop = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        btnQuayLai = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtTongSoLop = new javax.swing.JTextField();
 
@@ -102,10 +102,10 @@ public class formLopHoc extends javax.swing.JFrame {
             }
         });
 
-        btnQuayLai.setText("Quay Lại");
-        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+        btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuayLaiActionPerformed(evt);
+                btnThoatActionPerformed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class formLopHoc extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnQuayLai)
+                                .addComponent(btnThoat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,7 +180,7 @@ public class formLopHoc extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTongSoLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(btnQuayLai))
+                    .addComponent(btnThoat))
                 .addContainerGap())
         );
 
@@ -188,10 +188,15 @@ public class formLopHoc extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
 
-       this.dispose();
-    }//GEN-LAST:event_btnQuayLaiActionPerformed
+        if (JOptionPane.showConfirmDialog(null,
+                "Bạn có chắc chắn muốn đóng cửa sổ này?", "Thoát?",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     private void tableLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableLopMouseClicked
         txtMaLop.setText(tableLop.getValueAt(tableLop.getSelectedRow(), 1).toString());
@@ -295,8 +300,8 @@ public class formLopHoc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

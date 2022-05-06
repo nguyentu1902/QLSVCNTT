@@ -79,6 +79,7 @@ public class formMain extends javax.swing.JFrame {
         itemQuanLyLop = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -366,6 +367,15 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem4.setText("Kết quả học tập");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -587,9 +597,14 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void itemDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDangXuatActionPerformed
-        this.dispose();
-        formDangNhap a = new formDangNhap();
-        a.setVisible(true);
+        if (JOptionPane.showConfirmDialog(null,
+                "Bạn có chắc chắn muốn đăng xuất?", "Đăng xuất",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            this.dispose();
+            formDangNhap a = new formDangNhap();
+            a.setVisible(true);
+        }
     }//GEN-LAST:event_itemDangXuatActionPerformed
 
     private void itemThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemThoatActionPerformed
@@ -607,7 +622,6 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_itemQuanLyLopActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        this.dispose();
         formMonHoc frmMonHoc = new formMonHoc();
         frmMonHoc.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -616,6 +630,11 @@ public class formMain extends javax.swing.JFrame {
         formGiangVien frmGV = new formGiangVien();           
         frmGV.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        FormKetQuaHocTap frmKetQuaHocTap = new FormKetQuaHocTap();
+        frmKetQuaHocTap.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -672,6 +691,7 @@ public class formMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

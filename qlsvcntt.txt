@@ -1,0 +1,16 @@
+
+Lớp học - Sinh viên:
+	xóa lớp == xóa tất cả sv trong lớp
+	xóa hết sv trong lớp > lớp k bị xóa
+Sinh viên - CTMH:
+	xóa sv == xóa chi tiết môn học
+Môn học - Giảng viên - CTMH:
+	không xóa được những môn trong CTMH vì có sv đang theo học, chỉ xóa được những môn chưa sv nào học.
+	xóa môn không ảnh hưởng đến gv.
+	xóa gv == xóa tất cả các môn học của gv.	
+	=> để tránh trường hợp các môn học bị xóa khi xóa gv. Người dùng phải thêm gv mới vào và chuyển các môn học cho gv mới dạy rồi sau đó
+xóa gv cũ.
+	không xóa được gv dạy những môn có sinh viên đang theo học.
+	=> chuyển môn học này cho gv khác dạy thì mới xóa được gv cũ.
+
+	

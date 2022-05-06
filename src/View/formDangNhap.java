@@ -111,20 +111,28 @@ public class formDangNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        AdminDAO admDAO = new AdminDAO();
+        if("".equals(txtUserName.getText()) || "".equals(txtPassWord.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Yêu cầu nhập đẩy đủ thông tin!", "Thông Báo!", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else 
+        {
+            AdminDAO admDAO = new AdminDAO();
 
-        Admin admin = admDAO.dangNhap(txtUserName.getText(), txtPassWord.getText());
-        if( admin == null)
-        {
-            JOptionPane.showMessageDialog(null, "Username hoặc password không chính xác!", "Thông Báo!", JOptionPane.ERROR_MESSAGE);;
+            Admin admin = admDAO.dangNhap(txtUserName.getText(), txtPassWord.getText());
+            if (admin == null) {
+                JOptionPane.showMessageDialog(null, "Username hoặc password không chính xác!", "Thông Báo!", JOptionPane.ERROR_MESSAGE);
+            } 
+            else 
+            {
+                JOptionPane.showMessageDialog(null, "Đăng nhập thành công!\n" + "Xin chào " + admin.getHoTenAdmin() + "!");
+                formMain a = new formMain();
+                a.setVisible(true);
+                this.dispose();
+            }
         }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Đăng nhập thành công!\n"+"Xin chào "+admin.getHoTenAdmin()+"!");
-            formMain a = new formMain();
-            a.setVisible(true);
-            this.dispose();
-        }
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**

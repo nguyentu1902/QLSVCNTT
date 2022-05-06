@@ -144,7 +144,7 @@ public class formMonHoc extends javax.swing.JFrame {
 
         txtSoLuongMH.setEditable(false);
 
-        btnThoat.setText("Quay Lại");
+        btnThoat.setText(" Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThoatActionPerformed(evt);
@@ -322,9 +322,12 @@ public class formMonHoc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        this.dispose();
-        formMain a = new formMain();
-        a.setVisible(true);
+        if (JOptionPane.showConfirmDialog(null,
+                "Bạn có chắc chắn muốn đóng cửa sổ này?", "Thoát?",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void tableMonHocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMonHocMouseClicked

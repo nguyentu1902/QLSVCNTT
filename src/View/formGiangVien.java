@@ -36,7 +36,7 @@ public class formGiangVien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableGiangVien = new javax.swing.JTable();
-        btnQuayLai = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -89,13 +89,13 @@ public class formGiangVien extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 66, 440, 233));
 
-        btnQuayLai.setText("Quay Lại");
-        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+        btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuayLaiActionPerformed(evt);
+                btnThoatActionPerformed(evt);
             }
         });
-        getContentPane().add(btnQuayLai, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+        getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/teacher.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 142, 145));
@@ -183,13 +183,17 @@ public class formGiangVien extends javax.swing.JFrame {
             Object[] row = new Object[]{ String.valueOf(stt) ,gv.getIdGiangVien(), gv.getTenGiangVien(), gv.getHocVi()};
             tableGV.addRow(row);
         }
-        int sl = tableGiangVien.getRowCount();
-        txtTongSoGV.setText(String.valueOf(sl));
+        txtTongSoGV.setText(String.valueOf(tableGiangVien.getRowCount()));
     }
     
-    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnQuayLaiActionPerformed
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        if (JOptionPane.showConfirmDialog(null,
+                "Bạn có chắc chắn muốn đóng cửa sổ này?", "Thoát?",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     private void tableGiangVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableGiangVienMouseClicked
         txtMaGV.setText(tableGiangVien.getValueAt(tableGiangVien.getSelectedRow(), 1).toString());
@@ -239,7 +243,7 @@ public class formGiangVien extends javax.swing.JFrame {
 
             if (gvDAO.XoaGiangVien(gv) == -1) 
             {
-                JOptionPane.showMessageDialog(null, "Xóa thất bại!", "Thông báo!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Giảng viên hiện đang công tác tại trường!", "Thông báo!", JOptionPane.ERROR_MESSAGE);
             } 
             else 
             {                
@@ -306,6 +310,7 @@ public class formGiangVien extends javax.swing.JFrame {
                 tableGV.addRow(row);
             }                      
         }
+        txtTongSoGV.setText(String.valueOf(tableGiangVien.getRowCount()));
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     /**
@@ -345,9 +350,9 @@ public class formGiangVien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
