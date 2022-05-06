@@ -90,5 +90,30 @@ public class ChiTietMonHocDAO extends ConnectDB {
         }
         return -1;
     }
+        
+        public ArrayList<ChiTietMonHoc> TimKiemCTMH(int id) {
+        ArrayList<ChiTietMonHoc> dsCTMH = new ArrayList<ChiTietMonHoc>();
+        try {
+            String sql;
+            sql = "SELECT * FROM qlsv.ctmh WHERE idsinhvien like '%" + id +"%'";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                ChiTietMonHoc ctmh = new ChiTietMonHoc();
+                ctmh.setNgayBatDau(rs.getString(2));
+                ctmh.setNgayKetThuc(rs.getString(3));
+                ctmh.setDiemQT(rs.getFloat(4));
+                ctmh.setDiemCK(rs.getFloat(5));
+                ctmh.setDiemTLH4(rs.getFloat(6));
+                ctmh.setIdMonHoc(rs.getString(7));
+                ctmh.setIdSinhVien(rs.getString(8));
+                dsCTMH.add(ctmh);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dsCTMH;
+    }
     
 }

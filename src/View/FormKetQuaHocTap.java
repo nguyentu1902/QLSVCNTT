@@ -164,6 +164,11 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
         jPanel2.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 311, -1, -1));
 
         btnTimKiem.setText("Tìm theo MSSV");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 339, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -286,7 +291,11 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
             }
         }
         
-        //load diem tich luy he 4
+        loadDiemTichLuyHe4();
+    }
+    
+    public void loadDiemTichLuyHe4()
+    {
         float dtl = 0.00f;
         for (int i = 0; i < tableCTMH.getRowCount(); i++) 
         {
@@ -312,7 +321,6 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
             else// if(8.5f <= Float.parseFloat(tableCTMH.getValueAt(i, 6).toString()) && Float.parseFloat(tableCTMH.getValueAt(i, 6).toString()) <= 10.0f)
                 tableCTMH.setValueAt(4.0, i, 6);
         }
-        
     }
     
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -436,6 +444,37 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
         loadData();
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        if ("".equals(txtMSSV.getText())) 
+        {
+            JOptionPane.showMessageDialog(null, "Nhập MSSV để tìm!", "Thông báo!",
+                    JOptionPane.WARNING_MESSAGE);
+        } 
+        else 
+        {
+            ChiTietMonHocDAO CTMHDAO = new ChiTietMonHocDAO();
+            ArrayList<ChiTietMonHoc> dsCTMH = CTMHDAO.TimKiemCTMH(Integer.parseInt(txtMSSV.getText()));
+
+            DefaultTableModel tableCTMHShow = (DefaultTableModel) this.tableCTMH.getModel();
+            tableCTMHShow.setRowCount(0);
+            for (ChiTietMonHoc ctmh : dsCTMH) 
+            {
+                Object[] row = new Object[]{ctmh.getIdSinhVien(), ctmh.getIdMonHoc(), ctmh.getNgayBatDau(), ctmh.getNgayKetThuc(), ctmh.getDiemQT(), ctmh.getDiemCK(), ctmh.getDiemTLH4()};
+                tableCTMHShow.addRow(row);
+            }
+        }
+        loadDiemTichLuyHe4();
+
+        float diemTongHe4 = 0.0f;
+        for (int i = 0; i < tableCTMH.getRowCount(); i++) 
+        {
+            diemTongHe4 += (Float.parseFloat(tableCTMH.getValueAt(i, 6).toString())) / tableCTMH.getRowCount();
+        }
+        txtDiemTLHe4.setText(String.valueOf(Math.ceil(diemTongHe4 * 100.0) / 100.0));    //lam tron sau dau phay 2 chu so
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
