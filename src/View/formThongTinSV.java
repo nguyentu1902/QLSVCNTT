@@ -18,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ASUS RG
  */
-public class formMain extends javax.swing.JFrame {
+public class formThongTinSV extends javax.swing.JFrame {
 
     /**
      * Creates new form formMain
      */
-    public formMain() {
+    public formThongTinSV() {
         initComponents();
         LoadData();
     }
@@ -71,6 +71,7 @@ public class formMain extends javax.swing.JFrame {
         btnReLoad = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
+        btnInDSSV = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         itemDangXuat = new javax.swing.JMenuItem();
@@ -317,6 +318,14 @@ public class formMain extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 130, 30));
+
+        btnInDSSV.setText("Xuất DS SV");
+        btnInDSSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInDSSVActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnInDSSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, -1, -1));
 
         jMenu2.setText("Tác Vụ");
 
@@ -636,6 +645,10 @@ public class formMain extends javax.swing.JFrame {
         frmKetQuaHocTap.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void btnInDSSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInDSSVActionPerformed
+        cbbMaLop.getSelectedItem().toString();
+    }//GEN-LAST:event_btnInDSSVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -653,26 +666,28 @@ public class formMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formThongTinSV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formThongTinSV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formThongTinSV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formThongTinSV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formMain().setVisible(true);
+                new formThongTinSV().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
+    private javax.swing.JButton btnInDSSV;
     private javax.swing.JButton btnReLoad;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTimKiem;

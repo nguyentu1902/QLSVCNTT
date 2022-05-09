@@ -6,6 +6,7 @@ package View;
 
 import DAO.ChiTietMonHocDAO;
 import Model.ChiTietMonHoc;
+import Model.MonHoc;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -57,11 +58,14 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
+        btnLuuDangKy = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         btnReLoad = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtDiemTLHe4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        txtTongSTC = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Form Kết Quả Học Tập");
@@ -169,7 +173,15 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
                 btnTimKiemActionPerformed(evt);
             }
         });
-        jPanel2.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 339, -1, -1));
+        jPanel2.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        btnLuuDangKy.setText("Lưu Điểm Hệ 4");
+        btnLuuDangKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuDangKyActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnLuuDangKy, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,10 +219,29 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
 
         jButton1.setText("In Bảng Điểm");
 
+        txtTongSTC.setEditable(false);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
+        jLabel11.setText("Tổng Số Tín Chỉ:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReLoad)
+                        .addGap(320, 320, 320)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDiemTLHe4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -220,23 +251,12 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(btnThoat)
                         .addGap(341, 341, 341)
-                        .addComponent(jButton1)))
-                .addGap(0, 175, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addComponent(btnReLoad)
-                        .addGap(335, 335, 335)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDiemTLHe4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
+                        .addComponent(jButton1)
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTongSTC, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,20 +265,25 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnThoat))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnReLoad)
-                            .addComponent(jLabel10)
-                            .addComponent(txtDiemTLHe4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtDiemTLHe4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10)))))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTongSTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnThoat)
+                            .addComponent(jButton1)))))
         );
 
         pack();
@@ -321,6 +346,13 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
             else// if(8.5f <= Float.parseFloat(tableCTMH.getValueAt(i, 6).toString()) && Float.parseFloat(tableCTMH.getValueAt(i, 6).toString()) <= 10.0f)
                 tableCTMH.setValueAt(4.0, i, 6);
         }
+    }
+    
+    public void loadSoTinChi()
+    {
+        ChiTietMonHocDAO CTMHDAO = new ChiTietMonHocDAO();
+        MonHoc mh = CTMHDAO.SoTinChi(txtMSSV.getText());
+        txtTongSTC.setText(String.valueOf(mh.getSoTinChi()));
     }
     
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -416,6 +448,8 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+        ChiTietMonHocDAO CTMHDAO = new ChiTietMonHocDAO();
+        ChiTietMonHoc ctmh = new ChiTietMonHoc();
         if("".equals(txtMSSV.getText()) || "".equals(txtMaMH.getText()) || "".equals(txtNgayBD.getText()) || "".equals(txtNgayKT.getText()))
         {
             JOptionPane.showMessageDialog(null, "Yều cầu nhập đầy đủ thông tin!", "Cảnh Báo!",
@@ -423,8 +457,6 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
         }
         else
         {
-            ChiTietMonHocDAO CTMHDAO = new ChiTietMonHocDAO();
-            ChiTietMonHoc ctmh = new ChiTietMonHoc();
             ctmh.setNgayBatDau(txtNgayBD.getText());
             ctmh.setNgayKetThuc(txtNgayKT.getText());
             ctmh.setDiemCK(Float.parseFloat(txtDiemCK.getText()));
@@ -442,6 +474,8 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
             }
         }
         loadData();
+        
+            
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
@@ -471,7 +505,22 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
             diemTongHe4 += (Float.parseFloat(tableCTMH.getValueAt(i, 6).toString())) / tableCTMH.getRowCount();
         }
         txtDiemTLHe4.setText(String.valueOf(Math.ceil(diemTongHe4 * 100.0) / 100.0));    //lam tron sau dau phay 2 chu so
+        
+        loadSoTinChi();
     }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void btnLuuDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuDangKyActionPerformed
+        for(int i = 0; i<tableCTMH.getRowCount(); i++)
+        {
+            ChiTietMonHocDAO CTMHDAO = new ChiTietMonHocDAO();
+            ChiTietMonHoc ctmh = new ChiTietMonHoc();
+            ctmh.setIdSinhVien(tableCTMH.getValueAt(i, 0).toString());
+            ctmh.setIdMonHoc(tableCTMH.getValueAt(i, 1).toString());
+            ctmh.setDiemTLH4(Float.parseFloat(tableCTMH.getValueAt(i, 6).toString()));
+            CTMHDAO.CapNhatDiemTLHe4(ctmh);
+        }
+        JOptionPane.showMessageDialog(null, "Điểm hệ 4 của tất cả sinh viên đã được lưu vào CSDL!" );
+    }//GEN-LAST:event_btnLuuDangKyActionPerformed
 
     
     
@@ -513,6 +562,7 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
+    private javax.swing.JButton btnLuuDangKy;
     private javax.swing.JButton btnReLoad;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThoat;
@@ -521,6 +571,7 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -541,5 +592,6 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
     private javax.swing.JTextField txtMaMH;
     private javax.swing.JTextField txtNgayBD;
     private javax.swing.JTextField txtNgayKT;
+    private javax.swing.JTextField txtTongSTC;
     // End of variables declaration//GEN-END:variables
 }

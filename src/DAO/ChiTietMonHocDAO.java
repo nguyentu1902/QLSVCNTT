@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import Model.Admin;
+import Model.MonHoc;
 import Model.ChiTietMonHoc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,6 +91,21 @@ public class ChiTietMonHocDAO extends ConnectDB {
         return -1;
     }
         
+        public int CapNhatDiemTLHe4(ChiTietMonHoc ctmh) {
+        try {
+            String sql;
+            sql = "UPDATE `qlsv`.`ctmh` SET `diemtichluyhe4` = ? WHERE (`idmh` = ?) and (`idsinhvien` = ?)";
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setFloat(1, ctmh.getDiemTLH4());
+            pre.setString(2, ctmh.getIdMonHoc());
+            pre.setString(3, ctmh.getIdSinhVien());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+        
         public ArrayList<ChiTietMonHoc> TimKiemCTMH(int id) {
         ArrayList<ChiTietMonHoc> dsCTMH = new ArrayList<ChiTietMonHoc>();
         try {
@@ -116,4 +131,24 @@ public class ChiTietMonHocDAO extends ConnectDB {
         return dsCTMH;
     }
     
+    public MonHoc SoTinChi(String id) {
+        try {
+            int stc = 0;
+            String sql;
+            sql = "select sum(monhoc.sotinchi) from qlsv.ctmh inner join qlsv.monhoc where ctmh.idmh = monhoc.idmh and (`idsinhvien` = " + id + ")";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            MonHoc mh = new MonHoc();
+            while(rs.next())
+            {
+                mh.setSoTinChi(rs.getInt(1));      
+            }
+            return mh;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        MonHoc mh = new MonHoc();
+        return mh;
+    }
 }

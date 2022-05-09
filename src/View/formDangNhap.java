@@ -127,7 +127,7 @@ public class formDangNhap extends javax.swing.JFrame {
             else 
             {
                 JOptionPane.showMessageDialog(null, "Đăng nhập thành công!\n" + "Xin chào " + admin.getHoTenAdmin() + "!");
-                formMain a = new formMain();
+                formThongTinSV a = new formThongTinSV();
                 a.setVisible(true);
                 this.dispose();
             }
