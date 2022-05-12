@@ -8,11 +8,23 @@ import DAO.LopHocDAO;
 import DAO.SinhVienDAO;
 import Model.LopHoc;
 import Model.SinhVien;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -646,7 +658,23 @@ public class formThongTinSV extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void btnInDSSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInDSSVActionPerformed
-        cbbMaLop.getSelectedItem().toString();
+                if(tableSV.getColumnCount()<= 0){
+            return;
+        }
+        else{
+            try {
+                Hashtable map = new Hashtable();
+                JasperReport jpt = JasperCompileManager.compileReport("src/Report/Print.jrxml");
+                map.put("idLop", cbbMaLop.getSelectedItem().toString());
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/qlsv", "root", "admin12345");
+                JasperPrint p = JasperFillManager.fillReport(jpt, map, con);
+                JasperViewer.viewReport(p, false);
+            } catch (JRException ex) {
+                Logger.getLogger(formThongTinSV.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(formThongTinSV.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnInDSSVActionPerformed
 
     /**

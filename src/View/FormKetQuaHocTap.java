@@ -7,9 +7,21 @@ package View;
 import DAO.ChiTietMonHocDAO;
 import Model.ChiTietMonHoc;
 import Model.MonHoc;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -63,7 +75,7 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
         btnReLoad = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtDiemTLHe4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnInBangDiem = new javax.swing.JButton();
         txtTongSTC = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
 
@@ -217,7 +229,12 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
 
         txtDiemTLHe4.setEditable(false);
 
-        jButton1.setText("In Bảng Điểm");
+        btnInBangDiem.setText("In Bảng Điểm");
+        btnInBangDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInBangDiemActionPerformed(evt);
+            }
+        });
 
         txtTongSTC.setEditable(false);
 
@@ -251,7 +268,7 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(btnThoat)
                         .addGap(341, 341, 341)
-                        .addComponent(jButton1)
+                        .addComponent(btnInBangDiem)
                         .addGap(183, 183, 183)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -283,7 +300,7 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnThoat)
-                            .addComponent(jButton1)))))
+                            .addComponent(btnInBangDiem)))))
         );
 
         pack();
@@ -505,7 +522,6 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
             diemTongHe4 += (Float.parseFloat(tableCTMH.getValueAt(i, 6).toString())) / tableCTMH.getRowCount();
         }
         txtDiemTLHe4.setText(String.valueOf(Math.ceil(diemTongHe4 * 100.0) / 100.0));    //lam tron sau dau phay 2 chu so
-        
         loadSoTinChi();
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
@@ -521,6 +537,28 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(null, "Điểm hệ 4 của tất cả sinh viên đã được lưu vào CSDL!" );
     }//GEN-LAST:event_btnLuuDangKyActionPerformed
+
+    private void btnInBangDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInBangDiemActionPerformed
+        if (txtMSSV.getText().length() <= 0) {
+            return;
+        }
+        if (tableCTMH.getRowCount() <= 0) {
+            return;
+        }
+
+        Hashtable map = new Hashtable();
+        try {
+            JasperReport jpt = JasperCompileManager.compileReport("src/Report/PrintScore.jrxml");
+            map.put("idSinhVien", txtMSSV.getText());
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/qlsv", "root", "admin12345");
+            JasperPrint p = JasperFillManager.fillReport(jpt, map, con);
+            JasperViewer.viewReport(p, false);
+        } catch (JRException ex) {
+            Logger.getLogger(FormKetQuaHocTap.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FormKetQuaHocTap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnInBangDiemActionPerformed
 
     
     
@@ -562,13 +600,13 @@ public class FormKetQuaHocTap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
+    private javax.swing.JButton btnInBangDiem;
     private javax.swing.JButton btnLuuDangKy;
     private javax.swing.JButton btnReLoad;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

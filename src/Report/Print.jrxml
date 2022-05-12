@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c7306f4-3bab-43b3-8136-4e070d8dca3e">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idLop" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select sinhvien.idsinhvien, sinhvien.tensinhvien, sinhvien.gioitinh, sinhvien.ngaysinh, sinhvien.sdt, sinhvien.diachi, lop.tenlop, sinhvien.email from sinhvien inner join lop on sinhvien.idlop = lop.idlop
+where sinhvien.idlop = $P{idLop}]]>
+	</queryString>
+	<field name="idsinhvien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tensinhvien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gioitinh" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ngaysinh" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sdt" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diachi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tenlop" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="siso" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{idsinhvien}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="128" splitType="Stretch">
+			<staticText>
+				<reportElement x="335" y="11" width="237" height="20" uuid="293b72e5-2381-46a3-986d-0fa308354a12"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP.HCM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="31" width="162" height="20" uuid="c6ee47eb-60ac-49e3-ad4f-67b93680e280"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[KHOA CÔNG NGHỆ THÔNG TIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="67" width="278" height="38" uuid="a4a5862a-cd5f-4a40-9ee2-949dd10c35bd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DANH SÁCH SINH VIÊN]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="0" width="107" height="116" uuid="70361e43-3f5f-461d-9a68-d883b6c54753"/>
+				<imageExpression><![CDATA["E:\\DA Java\\DoAn\\QLSVCNTT\\src\\img\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement x="453" y="0" width="119" height="19" uuid="dc901b4e-dc2b-4b22-b801-0dab7e523318"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="409" y="0" width="44" height="19" uuid="a08188f0-2932-41ee-8c10-27b0200ab8a6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="32" height="19" uuid="aca32f3d-453a-4e74-b160-a79e63b0bcff"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lớp:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="0" width="100" height="19" uuid="7ed20efd-8886-48ca-8238-5ed9e86a5bb0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenlop}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="61" width="570" height="1" uuid="a209a243-4297-4138-af19-f83b0104f477"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="69" y="0" width="114" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8513b770-9536-465f-a15c-ad9d515e156b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Họ Tên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="247" y="0" width="61" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a47f461e-1f48-4f77-8f80-6e0614603c1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ngày Sinh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="510" y="0" width="60" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ed71af3d-5800-4e4c-8a0f-a5aa75f6a862"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Địa Chỉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="71" height="20" uuid="81246e8e-dafb-4d88-924b-39d898b55eb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MSSV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="183" y="0" width="64" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="19765955-e3d4-4880-8841-0f3d81cb4d64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Giới Tính]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="308" y="0" width="59" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f7b64bde-bc43-470a-8187-d32b6d9e985d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SĐT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="24" width="570" height="1" uuid="bb846ed8-d8f1-4497-bf0a-642de9a75380"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="367" y="0" width="143" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="036e3ec5-bffe-4e54-b956-177c2af2607a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="71" height="20" uuid="459e66a1-bdb2-49b2-9a61-19fe948f03b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idsinhvien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="114" height="20" uuid="e2a9f015-7e40-4eeb-9a94-944069fc46b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tensinhvien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="0" width="64" height="20" uuid="27e4aac1-7fb8-4c65-9bab-9daaa6b889c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{gioitinh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="0" width="61" height="20" uuid="de2c0d9d-d9f2-4d21-b78f-7c9e6ed8d178"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ngaysinh}]]></textFieldExpression>
+				<patternExpression><![CDATA["dd/MM/YYYY"]]></patternExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="0" width="59" height="20" uuid="09a80caa-49c2-4dd3-b509-9948e0d20204"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="62" height="20" uuid="2a2a229e-885c-4d95-bd93-ce10c93ad5c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{diachi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="24" width="571" height="1" uuid="2eeaf96b-fc21-4aed-9785-dc562a68a965"/>
+			</line>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="367" y="0" width="143" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="da4a73c7-5754-4824-a724-c483b14cdefd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="529" y="20" width="39" height="17" uuid="00c5ed46-b1c5-4394-b021-195ce8cd532a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{siso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="20" width="49" height="17" uuid="e0d321f6-5baf-4066-a17e-e7d43d66489e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sỉ Số:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="247" y="46" width="60" height="20" uuid="fea8ea4c-0230-4bd6-96b2-c3f192622cd4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="36" splitType="Stretch"/>
+	</summary>
+</jasperReport>
